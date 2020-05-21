@@ -167,4 +167,27 @@ class StepBouncyBallView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : StepBouncyBallView) {
+
+        private val animator : Animator = Animator(view)
+        private val sbb : StepBouncyBall = StepBouncyBall(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            sbb.draw(canvas, paint)
+            animator.animate {
+                sbb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            sbb.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
