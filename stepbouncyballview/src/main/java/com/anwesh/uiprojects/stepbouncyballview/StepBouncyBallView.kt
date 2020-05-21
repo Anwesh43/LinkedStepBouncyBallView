@@ -14,9 +14,9 @@ import android.graphics.Color
 
 val colors : Array<String> = arrayOf("#3F51B5", "#9C27B0", "#4CAF50", "#FF9800", "#F44336")
 val balls : Int = 5
-val scGap : Float = 0.02f / balls
+val scGap : Float = 0.03f / balls
 val backColor : Int = Color.parseColor("#BDBDBD")
-val delay : Long = 20
+val delay : Long = 10
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
