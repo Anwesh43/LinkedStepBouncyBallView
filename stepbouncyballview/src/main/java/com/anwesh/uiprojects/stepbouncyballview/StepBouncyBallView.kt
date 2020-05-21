@@ -192,4 +192,13 @@ class StepBouncyBallView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : StepBouncyBallView {
+            val view : StepBouncyBallView = StepBouncyBallView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
