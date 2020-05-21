@@ -144,4 +144,27 @@ class StepBouncyBallView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class StepBouncyBall(var i : Int) {
+
+        private var curr : SBBNode = SBBNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : () -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb()
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
 }
